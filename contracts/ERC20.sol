@@ -37,12 +37,16 @@ contract ERC20 {
     }
 
     function mint(address account, uint256 amount) public {
+        require(account != address(0), "mint to the zero address");
+
         _totalSupply = _totalSupply + amount;
         _balances[account] = _balances[account] + amount;
     }
 
     function transfer(address recipient, uint256 amount) public returns (bool) {
-        require(_balances[msg.sender] >= amount);
+        require(msg.sender != address(0), "transfer from the zero address");
+        require(recipient !=  address(0), "transfer to the zero address");
+        require(_balances[msg.sender] >= amount, "Insufficient balance");
 
         _balances[msg.sender] = _balances[msg.sender] - amount;
         _balances[recipient] = _balances[recipient] + amount;
