@@ -1,7 +1,7 @@
 const ERC20 = artifacts.require("ERC20");
 
-const TOKEN_NAME = "JDC_COIN"
-const TOKEN_SYMBOL = "JDCC"
+const TOKEN_NAME = "JC_COIN"
+const TOKEN_SYMBOL = "JCC"
 
 module.exports = async (deployer, network, accounts) => {
   await deployer.deploy(ERC20, TOKEN_NAME, TOKEN_SYMBOL);
